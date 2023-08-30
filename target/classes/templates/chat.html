@@ -5,6 +5,7 @@
     <link rel="stylesheet" th:href="@{styles.css}" />
 </head>
 <body>
+<div class="fireworks" id="fireworks"></div>
 <div class="chat-container">
     <div class="messages" id="messages">
         <div th:each="message: ${messages}">
@@ -23,6 +24,15 @@
 
         // Post this data to /send endpoint
         // This is a simple example using fetch, but you might want to handle errors and other cases more robustly.
+
+        const fireworks = document.getElementById('fireworks');
+        fireworks.style.opacity = "1";
+        setTimeout(() => {
+            fireworks.style.opacity = "0";
+        }, 1200);  // After 1.2s (the duration of our animation), hide the fireworks.
+
+
+
         fetch('/send', {
             method: 'POST',
             headers: {

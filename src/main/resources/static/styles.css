@@ -5,10 +5,21 @@
     box-sizing: border-box;
 }
 
+/* CSS variables for easier theme management */
+:root {
+    --primary-bg-color: #1a1a2e;
+    --secondary-bg-color: #23263a;
+    --accent-color: #e94560;
+    --text-color: #e0e0e0;
+    --input-bg-color: #3e416a;
+    --input-border-color: #484c58;
+    --hover-accent: #f75f73;
+}
+
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #1a1a2e;
-    color: #e0e0e0;
+    background-color: var(--primary-bg-color);
+    color: var(--text-color);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -20,8 +31,9 @@ a, button {
     transition: all 0.3s;
 }
 
-button:hover {
+button:hover, input[type="submit"]:hover {
     transform: scale(1.05);
+    background-color: var(--hover-accent);
 }
 
 .chat-container {
@@ -30,19 +42,21 @@ button:hover {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    background-color: #23263a;
+    background-color: var(--secondary-bg-color);
 }
+
 .login-container {
-    max-width: 340px; /* Increased width */
+    max-width: 340px;
     text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: var(--secondary-bg-color);
 }
-
-
 
 .messages {
     max-height: 400px;
     overflow-y: auto;
-    border: 1px solid #3e416a;
+    border: 1px solid var(--input-border-color);
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 8px;
@@ -57,7 +71,7 @@ button:hover {
 
 .input-container, .login-container form {
     display: flex;
-    gap: 10px; /* Creates a consistent gap between children */
+    gap: 10px;
     align-items: center;
 }
 
@@ -71,23 +85,16 @@ input[type="text"], input[type="submit"], button {
 
 input[type="text"] {
     flex: 1;
-    background-color: #3e416a;
-    color: #e0e0e0;
-    border: 1px solid #484c58;
+    background-color: var(--input-bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--input-border-color);
 }
 
 input[type="submit"], button {
-    background-color: #e94560;
-    color: #e0e0e0;
+    background-color: var(--accent-color);
+    color: var(--text-color);
     border: none;
-    transition: background-color 0.3s;
 }
 
-input[type="submit"]:hover, button:hover {
-    background-color: #f75f73;
-}
 
-.login-container {
-    max-width: 300px;
-    text-align: center;
-}
+
