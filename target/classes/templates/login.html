@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Login to Chat</title>
+  <link rel="stylesheet" th:href="@{styles.css}" />
+</head>
+<body>
+<div class="login-container">
+  <form method="post" action="/login">
+    <input type="text" name="username" placeholder="Enter your name" required />
+    <button type="submit">Join Chat</button>
+  </form>
+</div>
+</body>
+</html>
