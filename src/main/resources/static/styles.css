@@ -1,39 +1,93 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset styles for most browsers */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f6f6f6;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a, button {
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
 }
 
 .chat-container {
+    width: 100%;
     max-width: 600px;
-    margin: 50px auto;
-    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    background-color: #23263a;
 }
+.login-container {
+    max-width: 340px; /* Increased width */
+    text-align: center;
+}
+
+
 
 .messages {
     max-height: 400px;
-    overflow-y: scroll;
-    border: 1px solid #e0e0e0;
+    overflow-y: auto;
+    border: 1px solid #3e416a;
     padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
 }
 
 .message {
-    margin: 5px 0;
+    margin: 10px 0;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #2e323d;
 }
 
-.input-container {
-    margin-top: 20px;
+.input-container, .login-container form {
     display: flex;
-    justify-content: space-between;
+    gap: 10px; /* Creates a consistent gap between children */
+    align-items: center;
+}
+
+input[type="text"], input[type="submit"], button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
 }
 
 input[type="text"] {
     flex: 1;
-    padding: 10px;
-    margin-right: 10px;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
+    background-color: #3e416a;
+    color: #e0e0e0;
+    border: 1px solid #484c58;
+}
+
+input[type="submit"], button {
+    background-color: #e94560;
+    color: #e0e0e0;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #f75f73;
+}
+
+.login-container {
+    max-width: 300px;
+    text-align: center;
 }

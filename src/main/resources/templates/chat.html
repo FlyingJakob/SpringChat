@@ -12,7 +12,6 @@
         </div>
     </div>
     <div class="input-container">
-        <input type="text" placeholder="Enter your name" id="username" />
         <input type="text" placeholder="Enter your message" id="userInput" />
         <button onclick="sendMessage()">Send</button>
     </div>
@@ -20,7 +19,6 @@
 </div>
 <script th:inline="javascript">
     function sendMessage() {
-        var username = document.getElementById('username').value;
         var input = document.getElementById('userInput').value;
 
         // Post this data to /send endpoint
@@ -31,13 +29,33 @@
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: new URLSearchParams({
-                'username': username,
                 'content': input,
             }),
         }).then(() => {
             location.reload();
         });
     }
+
+    function fetchMessages() {
+        fetch('/getMessages')
+            .then(response => response.json())
+            .then(data => {
+                let messageContainer = document.getElementById('messages');
+                messageContainer.innerHTML = '';  // Clear current messages
+                data.forEach(message => {
+                    let messageElement = document.createElement("p");
+                    messageElement.classList.add("message");
+                    messageElement.innerText = `${message.username}: ${message.content}`;
+                    messageContainer.appendChild(messageElement);
+                });
+            });
+    }
+
+    // Fetch messages every 5 seconds
+    setInterval(fetchMessages, 5000);
+
+    // Fetch messages when the page loads
+    window.onload = fetchMessages;
 
 </script>
 </body>
